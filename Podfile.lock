@@ -1,0 +1,36 @@
+PODS:
+  - Alamofire (4.9.1)
+  - AlamofireObjectMapper (5.2.1):
+    - Alamofire (~> 4.7)
+    - ObjectMapper (~> 3.4)
+  - AlamofireSessionRenewer (1.0.1):
+    - Alamofire (~> 4.9.1)
+  - ModelMapper (10.0.1):
+    - ModelMapper/Core (= 10.0.1)
+  - ModelMapper/Core (10.0.1)
+  - ObjectMapper (3.5.3)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.7)
+  - AlamofireObjectMapper
+  - AlamofireSessionRenewer
+  - ModelMapper
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - AlamofireObjectMapper
+    - AlamofireSessionRenewer
+    - ModelMapper
+    - ObjectMapper
+
+SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  AlamofireObjectMapper: 1989f690e982b71921b9253f53a4f33a9bc00d88
+  AlamofireSessionRenewer: 6349eadeefcd1ecc5d92b793350b161473487f7a
+  ModelMapper: 0f68dd4300d0e27290c70f66492c7f795da21bcf
+  ObjectMapper: 97111c97e054a6ee25917662106689f0b4127b37
+
+PODFILE CHECKSUM: 68b059164f2d8220eb6f77f2e6b099eef801cbe1
+
+COCOAPODS: 1.10.1
