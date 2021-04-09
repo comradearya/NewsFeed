@@ -58,10 +58,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             
             detailsViewController.titleLabel.text = newsList[indexPath.row].title
             detailsViewController.descriptionLabel.text = newsList[indexPath.row].description
-            
-            if let url = URL(string: newsList[indexPath.row].imageUrl) {
-               
-            }
+            detailsViewController.setNavBarToTheView(with: newsList[indexPath.row].title)
+            detailsViewController.configure(with: newsList[indexPath.row])
         }
     }
     
