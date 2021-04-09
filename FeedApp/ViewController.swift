@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     let identifier = "cell"
     
     var newsList = [NewsForView] ()
+    let imageView = CustomImageView()
     
     @IBOutlet var tableView: UITableView!
     
@@ -43,22 +44,18 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as UITableViewCell
-        
-        let news = newsList[indexPath.row]
-        
-        cell = UITableViewCell(style: .subtitle, reuseIdentifier: identifier)
-        
-        cell.textLabel?.text = news.title
-        cell.detailTextLabel?.text = news.description
-        if let url = URL(string: news.imageUrl){
-            
+        if let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? CellViewController {
+            cell.configureCell(item: newsList[indexPath.row])
+            return cell
         }
-        
-        return cell
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("You tapped cell number \(indexPath.row).")
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+       return 100
     }
 }
