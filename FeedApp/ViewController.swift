@@ -12,8 +12,6 @@ class ViewController: UIViewController {
     let identifier = "cell"
     
     var newsList = [NewsForView] ()
-    let imageView = CustomImageView()
-    
     @IBOutlet var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -22,13 +20,14 @@ class ViewController: UIViewController {
         tableView.dataSource = self
         
         let anonymousFunction = { (fetchedNewsList: [News]) in
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [self] in
                 let newsForViewList = fetchedNewsList.map { news in
                     return NewsForView(
                         title: news.title ?? "",
                         description: news.newsDescription ?? "" ,
                         imageUrl: news.urlToImage ?? "" )
                 }
+                
                 self.newsList = newsForViewList
                 self.tableView.reloadData()
             }
@@ -52,10 +51,21 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("You tapped cell number \(indexPath.row).")
+        tableView.deselectRow(at: indexPath, animated: true)
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        if let detailsViewController = storyBoard.instantiateViewController(withIdentifier: "DetailViewControllerIdentifier") as? DetailViewController {
+            self.present(detailsViewController, animated: true, completion: nil)
+            
+            detailsViewController.titleLabel.text = newsList[indexPath.row].title
+            detailsViewController.descriptionLabel.text = newsList[indexPath.row].description
+            
+            if let url = URL(string: newsList[indexPath.row].imageUrl) {
+               
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-       return 100
+        return 100
     }
 }
