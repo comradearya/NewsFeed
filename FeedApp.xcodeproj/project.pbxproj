@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,9 @@
 		C017745D261F7CC900CA45EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C017745B261F7CC900CA45EF /* Main.storyboard */; };
 		C017745F261F7CCC00CA45EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C017745E261F7CCC00CA45EF /* Assets.xcassets */; };
 		C0177462261F7CCC00CA45EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0177460261F7CCC00CA45EF /* LaunchScreen.storyboard */; };
+		C01CC12826202780009DCEC6 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01CC12726202780009DCEC6 /* News.swift */; };
+		C03BAC4B2620291300CDFDB3 /* NewsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03BAC4A2620291300CDFDB3 /* NewsRepository.swift */; };
+		C03BAC6B26202BE300CDFDB3 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03BAC6A26202BE300CDFDB3 /* CustomImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +30,9 @@
 		C017745E261F7CCC00CA45EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C0177461261F7CCC00CA45EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C0177463261F7CCC00CA45EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C01CC12726202780009DCEC6 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		C03BAC4A2620291300CDFDB3 /* NewsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsRepository.swift; sourceTree = "<group>"; };
+		C03BAC6A26202BE300CDFDB3 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		D7B0DD3A9133BBED31BD80A1 /* Pods-FeedApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedApp.debug.xcconfig"; path = "Target Support Files/Pods-FeedApp/Pods-FeedApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -48,7 +54,6 @@
 				D7B0DD3A9133BBED31BD80A1 /* Pods-FeedApp.debug.xcconfig */,
 				914EC2A00E1D7FA4D294A589 /* Pods-FeedApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -81,6 +86,9 @@
 		C0177454261F7CC900CA45EF /* FeedApp */ = {
 			isa = PBXGroup;
 			children = (
+				C01CC12626202764009DCEC6 /* ViewController */,
+				C01CC1252620275E009DCEC6 /* Model */,
+				C01CC1242620274F009DCEC6 /* Controller */,
 				C0177455261F7CC900CA45EF /* AppDelegate.swift */,
 				C0177457261F7CC900CA45EF /* SceneDelegate.swift */,
 				C0177459261F7CC900CA45EF /* ViewController.swift */,
@@ -90,6 +98,30 @@
 				C0177463261F7CCC00CA45EF /* Info.plist */,
 			);
 			path = FeedApp;
+			sourceTree = "<group>";
+		};
+		C01CC1242620274F009DCEC6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C03BAC4A2620291300CDFDB3 /* NewsRepository.swift */,
+				C03BAC6A26202BE300CDFDB3 /* CustomImageView.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		C01CC1252620275E009DCEC6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C01CC12726202780009DCEC6 /* News.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C01CC12626202764009DCEC6 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,8 +239,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C017745A261F7CC900CA45EF /* ViewController.swift in Sources */,
+				C03BAC6B26202BE300CDFDB3 /* CustomImageView.swift in Sources */,
 				C0177456261F7CC900CA45EF /* AppDelegate.swift in Sources */,
+				C01CC12826202780009DCEC6 /* News.swift in Sources */,
 				C0177458261F7CC900CA45EF /* SceneDelegate.swift in Sources */,
+				C03BAC4B2620291300CDFDB3 /* NewsRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
