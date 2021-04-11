@@ -6,11 +6,12 @@
 //
 
 import ObjectMapper
+import RealmSwift
 
-struct NewsForView {
-    let title: String
-    let description: String
-    let imageUrl: String
+@objcMembers class NewsForView : Object {
+    dynamic var title: String = ""
+    dynamic var newsDescription: String = ""
+    dynamic var imageUrl: String = ""
 }
 
 class ResponseRequest: Mappable {
@@ -26,31 +27,15 @@ class ResponseRequest: Mappable {
 }
 
 class News: Mappable {
-    var source: Source?
-    var title, newsDescription: String?
-    var url, urlToImage, content: String?
+    var title, newsDescription, urlToImage: String?
     
     required init? (map: Map){
         
     }
     
     func mapping (map : Map) {
-        source <- map["source"]
         title <- map["title"]
         newsDescription <- map["description"]
-        url <- map["url"]
-        content <- map["content"]
         urlToImage <- map["urlToImage"]
-    }
-}
-
-class Source : Mappable {
-    var name: String?
-    
-    required init?(map: Map) {
-    }
-    
-    func mapping(map: Map) {
-        name <- map["name"]
     }
 }

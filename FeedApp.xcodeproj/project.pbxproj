@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		547EDF9838BFB0696D15F279 /* Pods_FeedApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FD667CB746F8625665BE11F /* Pods_FeedApp.framework */; };
 		C00737CF262068EA0075C036 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00737CE262068EA0075C036 /* ImageCache.swift */; };
+		C00737FA262229BD0075C036 /* RealmHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00737F9262229BD0075C036 /* RealmHelper.swift */; };
 		C0177456261F7CC900CA45EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0177455261F7CC900CA45EF /* AppDelegate.swift */; };
 		C0177458261F7CC900CA45EF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0177457261F7CC900CA45EF /* SceneDelegate.swift */; };
 		C017745A261F7CC900CA45EF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0177459261F7CC900CA45EF /* ViewController.swift */; };
@@ -25,6 +26,7 @@
 		2FD667CB746F8625665BE11F /* Pods_FeedApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeedApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		914EC2A00E1D7FA4D294A589 /* Pods-FeedApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedApp.release.xcconfig"; path = "Target Support Files/Pods-FeedApp/Pods-FeedApp.release.xcconfig"; sourceTree = "<group>"; };
 		C00737CE262068EA0075C036 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		C00737F9262229BD0075C036 /* RealmHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmHelper.swift; sourceTree = "<group>"; };
 		C0177452261F7CC900CA45EF /* FeedApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeedApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0177455261F7CC900CA45EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0177457261F7CC900CA45EF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 			children = (
 				C03BAC4A2620291300CDFDB3 /* NewsRepository.swift */,
 				C00737CE262068EA0075C036 /* ImageCache.swift */,
+				C00737F9262229BD0075C036 /* RealmHelper.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 				C017745A261F7CC900CA45EF /* ViewController.swift in Sources */,
 				C03BAC712620436600CDFDB3 /* CellViewController.swift in Sources */,
 				C0177456261F7CC900CA45EF /* AppDelegate.swift in Sources */,
+				C00737FA262229BD0075C036 /* RealmHelper.swift in Sources */,
 				C01CC12826202780009DCEC6 /* News.swift in Sources */,
 				C0177458261F7CC900CA45EF /* SceneDelegate.swift in Sources */,
 				C03BAC4B2620291300CDFDB3 /* NewsRepository.swift in Sources */,

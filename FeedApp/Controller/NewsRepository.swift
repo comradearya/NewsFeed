@@ -7,7 +7,7 @@
 
 import Alamofire
 import AlamofireObjectMapper
-
+import RealmSwift
 
 final class NewsRepository {
     
@@ -28,9 +28,12 @@ final class NewsRepository {
         Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding(destination: .queryString), headers: nil).responseObject { (response: DataResponse<ResponseRequest>) in
             switch(response.result){
             case .success(_):
-                let resultNews = response.result.value
-                onCompletion((resultNews?.articles)!)
-            default: break
+                if let resultNews = response.result.value?.articles {
+                    self.news = resultNews
+                    onCompletion(self.news)
+                }
+            case .failure(_):
+                onCompletion(self.news)
             }
         }
     }

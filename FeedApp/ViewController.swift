@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Realm
 
 class ViewController: UIViewController {
     //MARK: - Properties
@@ -21,15 +22,22 @@ class ViewController: UIViewController {
         
         let anonymousFunction = { (fetchedNewsList: [News]) in
             DispatchQueue.main.async { [self] in
-                let newsForViewList = fetchedNewsList.map { news in
-                    return NewsForView(
-                        title: news.title ?? "",
-                        description: news.newsDescription ?? "" ,
-                        imageUrl: news.urlToImage ?? "" )
-                }
-                
-                self.newsList = newsForViewList
+            if fetchedNewsList.isEmpty {
+                let lastNewsForViewList = RealmHelper.getObjects()
+                self.newsList = lastNewsForViewList
                 self.tableView.reloadData()
+            }
+            else {
+                for news in fetchedNewsList {
+                    let newsForView = NewsForView()
+                    newsForView.imageUrl = news.urlToImage ?? ""
+                    newsForView.newsDescription = news.newsDescription ?? ""
+                    newsForView.title = news.title ?? ""
+                    self.newsList.append(newsForView)
+                }
+                RealmHelper.saveObjects(objects: newsList)
+                    self.tableView.reloadData()
+                }
             }
         }
         NewsRepository.shared.fetchNewsList(onCompletion: anonymousFunction)
@@ -55,10 +63,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         if let detailsViewController = storyBoard.instantiateViewController(withIdentifier: "DetailViewControllerIdentifier") as? DetailViewController {
             self.present(detailsViewController, animated: true, completion: nil)
-            
+            print(newsList[indexPath.row].title)
             detailsViewController.titleLabel.text = newsList[indexPath.row].title
-            detailsViewController.descriptionLabel.text = newsList[indexPath.row].description
-            detailsViewController.setNavBarToTheView(with: newsList[indexPath.row].title)
+            detailsViewController.descriptionLabel.text = newsList[indexPath.row].newsDescription
+            detailsViewController.setNavBarToTheView(with: newsList[indexPath.row].title )
             detailsViewController.configure(with: newsList[indexPath.row])
         }
     }

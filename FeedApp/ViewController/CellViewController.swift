@@ -16,9 +16,9 @@ class CellViewController: UITableViewCell{
 
     func configureCell(item: NewsForView){
         cellTitleLabel.text = item.title
-        cellDescriptionLabel.text = item.description
+        cellDescriptionLabel.text = item.newsDescription
         ImageDownloader.shared.downloadImage(with: item.imageUrl, completionHandler: { (image, cached) in
                     self.cellImageView.image = image
-                }, placeholderImage: UIImage(named: "placeholder_profile_pic"))
+                }, placeholderImage: UIImage(named: "placeholder_for_picture"))
     }
 }
