@@ -8,6 +8,7 @@ target 'FeedApp' do
 	pod 'AlamofireSessionRenewer'
   pod 'ModelMapper'
   pod 'AlamofireObjectMapper'
+  pod 'RealmSwift', '~> 10.7'
   # Pods for FeedApp
 
 end

@@ -9,42 +9,64 @@ import UIKit
 import Realm
 
 class ViewController: UIViewController {
-    //MARK: - Properties
-    let identifier = "cell"
     
+    //MARK: - Properties
+    
+    let identifier = "cell"
     var newsList = [NewsForView] ()
+    var refreshControl = UIRefreshControl()
+    private var observer: NSObjectProtocol?
+    
+    //MARK: - Outlets
+    
     @IBOutlet var tableView: UITableView!
+    
+    //MARK: - Public Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+
+        refreshControl.attributedTitle = NSAttributedString(string: "Оновлюємо")
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        tableView.addSubview(refreshControl)
         
-        let anonymousFunction = { (fetchedNewsList: [News]) in
-            DispatchQueue.main.async { [self] in
-            if fetchedNewsList.isEmpty {
-                let lastNewsForViewList = RealmHelper.getObjects()
-                self.newsList = lastNewsForViewList
-                self.tableView.reloadData()
-            }
-            else {
-                for news in fetchedNewsList {
-                    let newsForView = NewsForView()
-                    newsForView.imageUrl = news.urlToImage ?? ""
-                    newsForView.newsDescription = news.newsDescription ?? ""
-                    newsForView.title = news.title ?? ""
-                    self.newsList.append(newsForView)
-                }
-                RealmHelper.saveObjects(objects: newsList)
-                    self.tableView.reloadData()
-                }
-            }
+        observer = NotificationCenter.default.addObserver(forName: UIApplication.didBecomeActiveNotification, object: nil, queue: nil) { [unowned self] notification in
+            loadData()
         }
-        NewsRepository.shared.fetchNewsList(onCompletion: anonymousFunction)
     }
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
+
+    @objc func refresh(_ sender: AnyObject) {
+        loadData()
+        refreshControl.endRefreshing()
+        self.tableView.reloadData()
+    }
+    
+    func loadData(){
+        let anonymousFunction = { (fetchedNewsList: [News]) in
+                if fetchedNewsList.isEmpty {
+                    let lastNewsForViewList = RealmHelper.getObjects()
+                    self.newsList = lastNewsForViewList
+                    self.tableView.reloadData()
+                }
+                else {
+                    for news in fetchedNewsList {
+                        let newsForView = NewsForView()
+                        newsForView.imageUrl = news.urlToImage ?? ""
+                        newsForView.newsDescription = news.newsDescription ?? ""
+                        newsForView.title = news.title ?? ""
+                        self.newsList.append(newsForView)
+                    }
+                    RealmHelper.saveObjects(objects: self.newsList)
+                    self.tableView.reloadData()
+                }
+        }
+        NewsRepository.shared.fetchNewsList(onCompletion: anonymousFunction)
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.newsList.count
@@ -63,10 +85,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         if let detailsViewController = storyBoard.instantiateViewController(withIdentifier: "DetailViewControllerIdentifier") as? DetailViewController {
             self.present(detailsViewController, animated: true, completion: nil)
-            print(newsList[indexPath.row].title)
             detailsViewController.titleLabel.text = newsList[indexPath.row].title
             detailsViewController.descriptionLabel.text = newsList[indexPath.row].newsDescription
-            detailsViewController.setNavBarToTheView(with: newsList[indexPath.row].title )
             detailsViewController.configure(with: newsList[indexPath.row])
         }
     }

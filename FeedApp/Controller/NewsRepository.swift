@@ -10,10 +10,12 @@ import AlamofireObjectMapper
 import RealmSwift
 
 final class NewsRepository {
+    //MARK:- Properties
     
     static let shared = NewsRepository()
-    
     var news: [News] = []
+    
+    //MARK:- Private Methods
     
     private func stringUrl() -> String {
         let date = Date()
@@ -22,6 +24,8 @@ final class NewsRepository {
         
         return stringUrl
     }
+    
+    //MARK:- API Methods
     
     func fetchNewsList(onCompletion: @escaping ([News]) -> ()) {
         guard let url = URL(string: stringUrl()) else { return }
@@ -39,6 +43,7 @@ final class NewsRepository {
     }
 }
 
+//MARK:- Helper
 let formatter: DateFormatter = {
     let dateFormatter = DateFormatter()
     dateFormatter.locale = Locale(identifier: "en_US_POSIX")

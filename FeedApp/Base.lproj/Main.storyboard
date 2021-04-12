@@ -117,7 +117,11 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
                                     <navigationItem title="Title" leftItemsSupplementBackButton="YES" id="UOS-wj-feD">
-                                        <barButtonItem key="leftBarButtonItem" title="Назад" style="done" id="4Q7-jD-eZx"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Назад" style="done" id="4Q7-jD-eZx">
+                                            <connections>
+                                                <action selector="didTapBackButton:" destination="uoa-bD-n8N" id="tjo-tQ-fop"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -159,8 +163,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="zTz-ih-6fs"/>
                     <connections>
-                        <outlet property="backButton" destination="4Q7-jD-eZx" id="nKg-b4-H42"/>
                         <outlet property="descriptionLabel" destination="o9P-ef-bcm" id="joU-XC-3AE"/>
+                        <outlet property="didTapBackButton" destination="4Q7-jD-eZx" id="ud2-pc-sfJ"/>
                         <outlet property="imageView" destination="axg-qg-S26" id="69f-00-Wky"/>
                         <outlet property="titleLabel" destination="I7a-IQ-hhx" id="Lnb-8X-fuS"/>
                         <outlet property="titleViewLabel" destination="4jX-5m-v3t" id="rAk-YV-2G6"/>

@@ -10,9 +10,13 @@ import UIKit
 
 class CellViewController: UITableViewCell{
     
+    //MARK: - Outlets
+
     @IBOutlet var cellTitleLabel: UILabel!
     @IBOutlet var cellDescriptionLabel: UILabel!
     @IBOutlet weak var cellImageView: UIImageView!
+
+    //MARK: - Public Methods
 
     func configureCell(item: NewsForView){
         cellTitleLabel.text = item.title

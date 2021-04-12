@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 final class ImageDownloader {
-    
+    //MARK:- Properties
     static let shared = ImageDownloader()
     private var cachedImages: [String: UIImage]
     private var imagesDownloadTasks: [String: URLSessionDataTask]
@@ -18,7 +18,8 @@ final class ImageDownloader {
     let serialQueueForDataTasks = DispatchQueue(label: "dataTasks.queue", attributes: .concurrent)
     
     
-    // MARK: Private init
+    // MARK:- Private init
+    
     private init() {
         cachedImages = [:]
         imagesDownloadTasks = [:]

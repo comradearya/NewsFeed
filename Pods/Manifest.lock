@@ -9,12 +9,18 @@ PODS:
     - ModelMapper/Core (= 10.0.1)
   - ModelMapper/Core (10.0.1)
   - ObjectMapper (3.5.3)
+  - Realm (10.7.2):
+    - Realm/Headers (= 10.7.2)
+  - Realm/Headers (10.7.2)
+  - RealmSwift (10.7.2):
+    - Realm (= 10.7.2)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
   - AlamofireObjectMapper
   - AlamofireSessionRenewer
   - ModelMapper
+  - RealmSwift (~> 10.7)
 
 SPEC REPOS:
   trunk:
@@ -23,6 +29,8 @@ SPEC REPOS:
     - AlamofireSessionRenewer
     - ModelMapper
     - ObjectMapper
+    - Realm
+    - RealmSwift
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
@@ -30,7 +38,9 @@ SPEC CHECKSUMS:
   AlamofireSessionRenewer: 6349eadeefcd1ecc5d92b793350b161473487f7a
   ModelMapper: 0f68dd4300d0e27290c70f66492c7f795da21bcf
   ObjectMapper: 97111c97e054a6ee25917662106689f0b4127b37
+  Realm: e523da9ade306c5ae87e85dc09fdef148d3e1cc1
+  RealmSwift: 4f6758c3adbdcc87f7b7777107226532a077f61c
 
-PODFILE CHECKSUM: 68b059164f2d8220eb6f77f2e6b099eef801cbe1
+PODFILE CHECKSUM: 0fe5d61ff8d803b900506c0c5f3c2851adfd1048
 
 COCOAPODS: 1.10.1

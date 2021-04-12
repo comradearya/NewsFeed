@@ -15,6 +15,7 @@ import RealmSwift
 }
 
 class ResponseRequest: Mappable {
+    
     var articles: [News]?
      
     required init? (map: Map){
@@ -23,7 +24,7 @@ class ResponseRequest: Mappable {
     
     func mapping (map: Map) {
           articles <- map["articles"]
-      }
+    }
 }
 
 class News: Mappable {
