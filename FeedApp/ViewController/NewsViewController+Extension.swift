@@ -9,12 +9,14 @@ import Foundation
 
 extension NewsViewController {
     @objc internal func refresh(_ sender: AnyObject) {
-        loadData()
+        self.currentPage = 1
+        self.newsList.removeAll()
+        loadData(forNumberOf: currentPage)
         refreshControl.endRefreshing()
         self.tableView.reloadData()
     }
     
-    internal func loadData(){
+    internal func loadData(forNumberOf page: Int){
         let anonymousFunction = { (fetchedNewsList: [News]) in
                 if fetchedNewsList.isEmpty {
                     let lastNewsForViewList = RealmHelper.getObjects()
@@ -28,12 +30,20 @@ extension NewsViewController {
                         newsForView.newsDescription = news.newsDescription ?? ""
                         newsForView.title = news.title ?? ""
                         self.newsList.append(newsForView)
+                        self.newsList = self.newsList.uniqued()
                     }
                     RealmHelper.saveObjects(objects: self.newsList)
                     self.tableView.reloadData()
                 }
         }
-        NewsRepository.shared.fetchNewsList(onCompletion: anonymousFunction)
+        NewsRepository.shared.fetchNewsList(currentNumberOf: currentPage, onCompletion: anonymousFunction)
     }
     
+}
+
+extension Array where Element: Hashable {
+    func uniqued() -> [Element] {
+        var set = Set<Element>()
+        return filter { set.insert($0).inserted }
+    }
 }

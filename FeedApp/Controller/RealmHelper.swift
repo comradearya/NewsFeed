@@ -40,8 +40,6 @@ class RealmHelper {
         do {
             let realmResults = realm.objects(NewsForView.self)
             return Array(realmResults)
-        } catch let error as NSError {
-            NSLog("Could not read database: ", error)
         }
     }
     

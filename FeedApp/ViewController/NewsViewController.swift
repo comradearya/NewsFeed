@@ -12,10 +12,11 @@ class NewsViewController: UIViewController {
     
     //MARK: - Properties
     
-    let identifier = "NewsCell"
-    var newsList = [NewsForView] ()
-    var refreshControl = UIRefreshControl()
-    private var observer: NSObjectProtocol?
+    private let identifier = "NewsCell"
+    internal var newsList = [NewsForView] ()
+    internal var refreshControl = UIRefreshControl()
+    internal var observer: NSObjectProtocol?
+    internal var currentPage: Int = 1
     
     //MARK: - Outlets
     
@@ -33,7 +34,7 @@ class NewsViewController: UIViewController {
         tableView.addSubview(refreshControl)
         
         observer = NotificationCenter.default.addObserver(forName: UIApplication.didBecomeActiveNotification, object: nil, queue: nil) { [unowned self] notification in
-            loadData()
+            loadData(forNumberOf: currentPage)
         }
     }
 }
@@ -63,8 +64,9 @@ extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        //return 100
-        return UITableView.automaticDimension
+        return 100
+        
+        //return UITableView.automaticDimension
     }
 }
 
@@ -72,7 +74,8 @@ extension NewsViewController {
     internal func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let bottomEdge = scrollView.contentOffset.y + scrollView.frame.height
         if bottomEdge >= scrollView.contentSize.height {
-            loadData()
+            self.currentPage += 1
+            loadData(forNumberOf: currentPage)
         }
     }
 }

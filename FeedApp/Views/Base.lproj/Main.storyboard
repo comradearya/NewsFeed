@@ -35,7 +35,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fI0-mu-EBE">
-                                                    <rect key="frame" x="115" y="8" width="279" height="56"/>
+                                                    <rect key="frame" x="115" y="10" width="279" height="54"/>
                                                     <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -52,7 +52,7 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="fI0-mu-EBE" firstAttribute="top" secondItem="8Ym-HU-QW0" secondAttribute="top" constant="8" id="Awu-GZ-BnV"/>
+                                                <constraint firstItem="fI0-mu-EBE" firstAttribute="top" secondItem="8Ym-HU-QW0" secondAttribute="top" constant="10" id="Awu-GZ-BnV"/>
                                                 <constraint firstItem="t9E-aT-OrL" firstAttribute="leading" secondItem="8Ym-HU-QW0" secondAttribute="leading" constant="5" id="Bo9-fy-vbW"/>
                                                 <constraint firstItem="knn-vN-4LU" firstAttribute="top" secondItem="fI0-mu-EBE" secondAttribute="bottom" constant="2" id="NgX-By-XxO"/>
                                                 <constraint firstAttribute="bottom" secondItem="knn-vN-4LU" secondAttribute="bottom" constant="2" id="TIZ-cd-Pkm" userLabel="bottom &gt;= Cell Description Label.bottom + 2"/>
