@@ -9,14 +9,15 @@ import Foundation
 import UIKit
 
 final class ImageDownloader {
+    
     //MARK:- Properties
+    
     static let shared = ImageDownloader()
-    private var cachedImages: [String: UIImage]
+    var cachedImages: [String: UIImage]
     private var imagesDownloadTasks: [String: URLSessionDataTask]
     
-    let serialQueueForImages = DispatchQueue(label: "images.queue", attributes: .concurrent)
-    let serialQueueForDataTasks = DispatchQueue(label: "dataTasks.queue", attributes: .concurrent)
-    
+    private let serialQueueForImages = DispatchQueue(label: "images.queue", attributes: .concurrent)
+    private let serialQueueForDataTasks = DispatchQueue(label: "dataTasks.queue", attributes: .concurrent)
     
     // MARK:- Private init
     
@@ -70,18 +71,15 @@ final class ImageDownloader {
                 _ = self.serialQueueForDataTasks.sync(flags: .barrier) {
                     self.imagesDownloadTasks.removeValue(forKey: imageUrlString)
                 }
-                
                 // Always execute completion handler explicitly on main thread
                 DispatchQueue.main.async {
                     completionHandler(image, false)
                 }
             }
-            
             // We want to control the access to no-thread-safe dictionary in case it's being accessed by multiple threads at once
             self.serialQueueForDataTasks.sync(flags: .barrier) {
                 imagesDownloadTasks[imageUrlString] = task
             }
-            
             task.resume()
         }
     }
